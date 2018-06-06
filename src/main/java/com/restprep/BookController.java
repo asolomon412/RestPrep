@@ -1,5 +1,6 @@
 package com.restprep;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,6 +20,15 @@ public class BookController {
 	public Book test(@RequestParam("id") String id){
 		System.out.println(id);
 		return new Book(1, "Test", "Antonella Solomon");
+	}
+	
+	@GetMapping("/test2")
+	public List<Book> test2(@RequestParam("id") int id, @RequestParam("title") String title, @RequestParam("author") String author){
+		ArrayList<Book> b= new ArrayList<>();
+		b.add(new Book(1, "Test", "Antonella Solomon"));
+		b.add(new Book(id,title,author));
+		System.out.println(id);
+		return b;
 	}
 
 }
